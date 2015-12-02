@@ -1,0 +1,70 @@
+
+set nocompatible
+filetype off
+set shell=/bin/bash
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'bling/vim-bufferline'
+Plugin 'dag/vim-fish'
+Plugin 'itchyny/lightline.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+set autochdir
+set autoindent
+set autoread
+set background=dark
+set expandtab
+set hidden
+set history=1000
+set laststatus=2
+set mouse=a
+set nobackup
+set nonumber
+set nopaste
+set noswapfile
+set nowritebackup
+set shiftwidth=2
+set smartindent
+set softtabstop=2
+set textwidth=80
+set wrap linebreak nolist
+
+
+filetype plugin indent on
+syntax   enable
+autocmd! bufwritepost           vimrc       source %
+autocmd! bufwritepost          .vimrc       source %
+autocmd  bufreadpost,bufnewfile *.md        set filetype=markdown
+autocmd  bufreadpost,bufnewfile Vagrantfile set filetype=ruby
+
+
+:imap kj <Esc>
+
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+
+set t_Co=256
+let g:lightline =  {
+      \ 'active' : { 'right' : [ ['percent']
+      \                        , ['lineinfo'] 
+      \                        , ['filetype'] 
+      \                        ]
+      \            }
+      \ }
