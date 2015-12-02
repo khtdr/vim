@@ -65,3 +65,4 @@ let g:lightline =  {
       \                        ]
       \            }
       \ }
+let g:markdown_fenced_languages = ['html', 'javascript', 'php', 'bash=sh']
