@@ -2,10 +2,11 @@
 set autochdir
 set autoindent
 set autoread
-set background=dark
+set background=light
 set expandtab
 set hidden
 set history=1000
+set hlsearch
 set laststatus=2
 set mouse=a
 set nobackup
@@ -34,6 +35,7 @@ Plugin 'dag/vim-fish'
 Plugin 'itchyny/lightline.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-scripts/nginx.vim'
 
 call vundle#end()
 
