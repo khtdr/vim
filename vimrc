@@ -2,7 +2,7 @@
 set autochdir
 set autoindent
 set autoread
-set background=light
+set background=dark
 set expandtab
 set hidden
 set history=1000
@@ -36,6 +36,9 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/nginx.vim'
+Plugin 'elzr/vim-json'
+Plugin 'flowtype/vim-flow'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 
@@ -67,4 +70,10 @@ let g:lightline =  {
       \                        ]
       \            }
       \ }
-let g:markdown_fenced_languages = ['html', 'javascript', 'php', 'bash=sh']
+let g:markdown_fenced_languages = [
+      \ 'html', 'php',
+      \ 'javascript', 'js=javascript',
+      \ 'sh', 'bash=sh',
+      \ ]
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
