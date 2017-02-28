@@ -33,12 +33,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'dag/vim-fish'
 Plugin 'itchyny/lightline.vim'
-Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'elzr/vim-json'
 Plugin 'flowtype/vim-flow'
 Plugin 'wting/rust.vim'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
@@ -64,6 +65,7 @@ endfunction
 
 set t_Co=256
 let g:lightline =  {
+      \ 'colorscheme': 'solarized',
       \ 'active' : { 'right' : [ ['percent']
       \                        , ['lineinfo'] 
       \                        , ['filetype'] 
@@ -77,3 +79,18 @@ let g:markdown_fenced_languages = [
       \ ]
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
+let g:flow#autoclose = 1
+
+
+" modify selected text using combining diacritics
+command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
+command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
+command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
+command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
+
+function! s:CombineSelection(line1, line2, cp)
+  execute 'let char = "\u'.a:cp.'"'
+  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+endfunction
+
+
